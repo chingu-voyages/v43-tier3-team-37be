@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const errorHandler = require('./middleware/errorHandler');
-const connectDb = require('./config/db');
+const {connectDb} = require('./config/db');
 const bodyParser = require('body-parser');
 
 
