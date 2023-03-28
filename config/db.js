@@ -6,11 +6,15 @@ dotenv.config();
 mongoose.set("strictQuery", false);
 
 const databaseURI = () => {
-    const host = process.env.MONGO_HOST || 'localhost';
+    let databaseUrl = '';
+    if(process.env.NODE_ENV === 'production'){
+        databaseUrl =process.env.DATA_BASE_URL;
+    }else{
+        const host = process.env.MONGO_HOST || 'localhost';
     const port = parseInt(process.env.MONGO_PORT, 10) || 27017;
     const username = process.env.MONGO_USER || '';
     const password = process.env.MONGO_PWD || '';
-    const db = process.env.MONGO_DB || 'tasteat-app';
+    const db = process.env.MONGO_DB || 'food-devilry';
 
     const connectionArgs = ['mongodb://'];
 
@@ -19,10 +23,12 @@ const databaseURI = () => {
     }
 
     connectionArgs.push(`${host}:${port}/${db}`);
-    const databaseUrl = connectionArgs.join('');
-
+    databaseUrl = connectionArgs.join('');
+    }
+    
     return databaseUrl;
 }
+
 
 const connectDb = async () => {
 
