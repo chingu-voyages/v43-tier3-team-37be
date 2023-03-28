@@ -14,7 +14,7 @@ const databaseURI = () => {
     const port = parseInt(process.env.MONGO_PORT, 10) || 27017;
     const username = process.env.MONGO_USER || '';
     const password = process.env.MONGO_PWD || '';
-    const db = process.env.MONGO_DB || 'food-devilry';
+    const db = process.env.MONGO_DB || 'tasteat-app';
 
     const connectionArgs = ['mongodb://'];
 
